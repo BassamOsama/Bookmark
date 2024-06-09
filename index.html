@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!--! -------------------------------- metas -------------------------------- -->
+    <meta charset="UTF-8" />
+    <meta name="author" content="Bassam Osama" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--! ----------------------------- page title ------------------------------ -->
+    <title>Bookmark</title>
+    <!--! ------------------------------ fav icon ------------------------------- -->
+    <link href="images/bookmark.png" rel="icon" />
+    <!--! ------------------------------ font awesome --------------------------- -->
+    <link rel="stylesheet" href="css/lib/all.min.css" />
+    <!--! ------------------------------ bootstrap css -------------------------- -->
+    <!-- <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    /> -->
+    <link rel="stylesheet" href="css/lib/bootstrap.min.css" />
+    <!--! ----------------------------- google fonts ---------------------------- -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=PT+Sans+Caption:wght@400;700&family=Pacifico&family=Righteous&display=swap"
+      rel="stylesheet"
+    />
+    <!--! ---------------------------- bootstrap icons -------------------------- -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <!--! ------------------------------- local css ----------------------------- -->
+    <link rel="stylesheet" href="css/animations.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/media.css" />
+  </head>
+  <body>
+    <main class="interface position-relative py-5">
+      <div
+        class="container d-flex flex-column justify-content-center align-items-center"
+      >
+        <h1 class="py-2 position-relative">Bookmarker</h1>
+        <div
+          class="bookmark-box w-100 p-3 py-4 mt-5 d-flex flex-column justify-content-center align-items-center gap-4"
+        >
+          <h2>
+            <i class="fa-solid fa-bookmark"></i>
+            Bookmark your favorite sites
+            <i class="fa-solid fa-bookmark"></i>
+          </h2>
+          <div class="w-100 d-flex flex-column justify-content-center">
+            <label for="bookmarkName" class="pb-2 fw-semibold ms-2">
+              <i class="fa-solid fa-book-bookmark pe-2"></i>
+              Site Name
+            </label>
+            <input
+              type="text"
+              placeholder="Bookmark Name"
+              class="form-control"
+              id="bookmarkName"
+            />
+          </div>
+          <div class="w-100 d-flex flex-column justify-content-center">
+            <label for="bookmarkURL" class="pb-2 fw-semibold ms-2">
+              <i class="fa-solid fa-link pe-2"></i>
+              Site URL
+            </label>
+            <input
+              type="url"
+              placeholder="Website URL"
+              class="form-control"
+              id="bookmarkUrl"
+            />
+          </div>
+          <button class="btn btn-submit pointer px-5" id="submitBtn">
+            Submit
+          </button>
+        </div>
+        <table class="table mt-4 text-center bg-light">
+          <thead>
+            <tr>
+              <th class="text-capitalize">index</th>
+              <th class="text-capitalize">Website Name</th>
+              <th class="text-capitalize">Visit</th>
+              <th class="text-capitalize">Delete</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+      <div
+        class="box-info position-absolute start-0 top-0 w-100 h-100 d-flex justify-content-center align-items-center d-none"
+      >
+        <div class="box-content bg-white p-4 rounded-2 shadow-lg">
+          <header
+            class="w-100 d-flex justify-content-between align-items-center mb-4"
+          >
+            <div class="dots d-flex">
+              <span class="rounded-circle me-2"></span>
+              <span class="rounded-circle me-2"></span>
+              <span class="rounded-circle me-2"></span>
+            </div>
+            <button class="btn border-0" id="closeBtn">
+              <i class="fa-solid fa-xmark close fs-3"></i>
+            </button>
+          </header>
+          <p class="m-0 pb-2">
+            Site Name or Url is not valid, Please follow the rules below :
+          </p>
+          <ol class="rules list-unstyled m-0">
+            <li>
+              <i class="fa-regular fa-circle-right p-2"></i>
+              Site name must contain at least 3 characters
+            </li>
+            <li>
+              <i class="fa-regular fa-circle-right p-2"></i>
+              Site URL must be a valid one
+            </li>
+          </ol>
+        </div>
+      </div>
+    </main>
+    <!--! ------------------------------ bootstrap js --------------------------- -->
+    <!-- <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script> -->
+    <script src="js/lib/bootstrap.bundle.min.js"></script>
+    <!--! -------------------------------- local js ----------------------------- -->
+    <script src="js/main.js"></script>
+  </body>
+</html>
