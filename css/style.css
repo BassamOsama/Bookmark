@@ -50,7 +50,7 @@ main h2 {
     font-family: "Righteous", cursive;
     font-size: 25px;
     color: #b5ac49;
-    /* we didn't take the background clip or the text fill color yet */
+    /*! we didn't take the background clip or the text fill color yet */
 }
 .form-control {
     border: var(--bs-border-width) solid #ced4da;
