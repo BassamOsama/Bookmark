@@ -1,28 +1,28 @@
-var siteName = document.getElementById("bookmarkName");
-var siteUrl = document.getElementById("bookmarkUrl");
-var submitBtn = document.getElementById("submitBtn");
-var tableBody = document.getElementById("tableBody");
-var alert = document.querySelector(".box-info");
-var closeBtn = document.getElementById("closeBtn");
-var sites = [];
-var deleteBtn;
-var visitBtn;
+const siteName = document.getElementById("bookmarkName");
+const siteUrl = document.getElementById("bookmarkUrl");
+const submitBtn = document.getElementById("submitBtn");
+const tableBody = document.getElementById("tableBody");
+const alert = document.querySelector(".box-info");
+const closeBtn = document.getElementById("closeBtn");
+let sites = [];
+let deleteBtn;
+let visitBtn;
 
 if (localStorage.getItem("sitesList")) {
   sites = JSON.parse(localStorage.getItem("sitesList"));
-  for (var index = 0; index < sites.length; index++) {
+  for (let index = 0; index < sites.length; index++) {
     displaySite(index);
   }
 }
 function displaySite(index) {
-  var userUrl = sites[index].siteUrl;
-  var httpsRegex = /^https?:\/\//g;
+  const userUrl = sites[index].siteUrl;
+  const httpsRegex = /^https?:\/\//g;
   if (httpsRegex.test(userUrl)) {
     validUrl = userUrl;
   } else {
     validUrl = `https://${userUrl}`;
   }
-  var newSite = `
+  const newSite = `
             <tr>
                 <td>${index + 1}</td>
                 <td>${sites[index].siteName}</td>              
@@ -42,7 +42,7 @@ function displaySite(index) {
   tableBody.innerHTML += newSite;
   deleteBtn = document.querySelectorAll(".btn-delete");
   if (deleteBtn) {
-    for (var i = 0; i < deleteBtn.length; i++) {
+    for (let i = 0; i < deleteBtn.length; i++) {
       deleteBtn[i].addEventListener("click", function (e) {
         deleteSite(e);
       });
@@ -50,7 +50,7 @@ function displaySite(index) {
   }
   visitBtn = document.querySelectorAll(".btn-visit");
   if (visitBtn) {
-    for (var i = 0; i < visitBtn.length; i++) {
+    for (let i = 0; i < visitBtn.length; i++) {
       visitBtn[i].addEventListener("click", function (e) {
         visitSite(e);
       });
@@ -62,7 +62,7 @@ function clearInput() {
   siteUrl.value = "";
 }
 function capitalize(name) {
-  var names = name.split("");
+  let names = name.split("");
   names[0] = names[0].toUpperCase();
   return names.join("");
 }
@@ -71,7 +71,7 @@ submitBtn.addEventListener("click", function () {
     siteName.classList.contains("is-valid") &&
     siteUrl.classList.contains("is-valid")
   ) {
-    var site = {
+    let site = {
       siteName: capitalize(siteName.value),
       siteUrl: siteUrl.value,
     };
@@ -87,25 +87,24 @@ submitBtn.addEventListener("click", function () {
 });
 function deleteSite(e) {
   tableBody.innerHTML = "";
-  var deletedIndex = e.target.dataset.index;
+  let deletedIndex = e.target.dataset.index;
   sites.splice(deletedIndex, 1);
-  for (var k = 0; k < sites.length; k++) {
+  for (let k = 0; k < sites.length; k++) {
     displaySite(k);
   }
   localStorage.setItem("sitesList", JSON.stringify(sites));
 }
 function visitSite(e) {
-  var index = e.target.dataset.index;
-  var httpsRegex = /^https?:\/\//;
+  let index = e.target.dataset.index;
+  let httpsRegex = /^https?:\/\//;
   if (httpsRegex.test(sites[index].siteUrl)) {
     open(sites[index].siteUrl);
   } else {
     open(`https://${sites[index].siteUrl}`);
   }
 }
-var nameRegex = /^\w{3,}(\s+\w+)*$/;
-var urlRegex =
-  /^((https?):\/\/)?([w|W]{3}\.)+[a-zA-Z0-9\-\.]{3,}\.[a-zA-Z]{2,}(\.[a-zA-Z]{2,})?$/;
+let nameRegex = /^\w{3,}(\s+\w+)*$/;
+let urlRegex = /^(https?:\/\/)?(www\.)?\w+\.\w{2,}(:\d{1,5})?(\/\S*)?$/;
 siteName.addEventListener("input", function () {
   validate(siteName, nameRegex);
 });
